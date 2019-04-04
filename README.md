@@ -1,5 +1,5 @@
 # Simple-TransformerEncoder-keras
-A simple implementation of Transformer Encoder in keras based on [Attention is all you need](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf). The implementation does not include masking. Trainable Positional embeddings is also added so that model could learn sequential information.
+A simple implementation of Transformer Encoder in keras based on [Attention is all you need](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf). The implementation does not include masking, completely. Trainable Positional embeddings is also added so that model could learn sequential information.
 This repository also includes an example of Transformer as a classifier and its attention visualization.
 
 ## Usage
