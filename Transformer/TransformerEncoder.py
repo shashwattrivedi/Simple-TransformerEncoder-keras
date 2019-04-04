@@ -7,7 +7,19 @@ from LayerNormalization import LayerNormalization
 from PositionWiseFeedForward import PositionWiseFeedForward
 
 class TransformerEncoder():
+'''
+    Main Transformer Encoder block : Encapsulates different layers with a Transformer Encoder block and calls them in order.
+    Inputs
+    d_model : dimensions of the output and internal layers
+    heads   : number of heads
+    dim_q   : query and key dimension 
+    dim_v   : value dimension
+    hidden_units : hidden units for the positionwise feed forward network
+    dropout_rate : dropout_rate
 
+    Outputs
+    A tuple:Transformer Encoder Representation, attention weights for each head and token
+'''
     def __init__(self, d_model,heads,dim_q,dim_v,hidden_units,dropout_rate,name,activation='relu', **kwargs):
         self.dim_v        = dim_v
         self.dim_q        = dim_q
