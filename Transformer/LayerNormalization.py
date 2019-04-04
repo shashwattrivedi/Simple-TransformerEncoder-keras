@@ -6,7 +6,10 @@ import tensorflow as tf
 from keras.initializers import Ones,Zeros
 
 class LayerNormalization(Layer):
-
+    '''
+    Layer normalization of the input with trainable gain_parameter and bias parameter
+    Source: https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/transformer.py#L14
+    '''
     def __init__(self, **kwargs):
         super(LayerNormalization, self).__init__(**kwargs)
 
