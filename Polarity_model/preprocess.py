@@ -60,6 +60,19 @@ def capitalize(text):
 
 
 class TextProcessor:
+    '''
+        Performs text preprocessing for input data. 
+        1. Adds a special [CLS] token for transformer classifier
+        2. Calculates the max sequence length required for the model
+        3. Returns padded seuences with word index from the tokenizer
+        
+        fit
+            fits tokenizer on the data and calculate max_sequence_length
+        fit_and_transform
+            fits on the given data and returns the padded sequnces
+        transform
+            transform the given test data
+    '''
     def __init__(self, nlp):
         self.nlp = nlp
         self.tokenizer= Tokenizer()
@@ -112,8 +125,6 @@ class TextProcessor:
 
     def clean_for_humans(self, texts):
         return [re.sub("\s(n')", r'\1', re.sub(r'\s\'(\w)', r"'\1", capitalize(x))) for x in texts]
-
-
 
     def addSpecialToken(self,quesition_list):
         return ['[CLS] ' + ques for ques in quesition_list]
