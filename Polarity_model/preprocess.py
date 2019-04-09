@@ -108,7 +108,20 @@ class TextProcessor:
 
         return padded_sequences
 
-
+    def create_inverse_dict(self):
+        self.inversedict = {value:key for key,value in self.tokenizer.word_index.items()}
+        
+    def backtransform(self,sequences):
+        if not self.inversedict:
+            raise Exception('Word index is not prepared')
+        
+        sent = []
+        for sequence in sequences:
+            sent.append(" ".join([self.inversedict.get(index,"") for index in sequence]))
+        
+        return sent
+    
+    
     def tokenize(self, texts):
         ret = []
         processed = self.nlp.pipe(texts)
