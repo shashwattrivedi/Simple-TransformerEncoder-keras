@@ -5,4 +5,4 @@ the use of the TransformerEncoder as a classification model. The model is inspir
 Pretrained Glove vectors have been taken as input and first index has been sliced to give representation of the full sentence.
 A sigmoid is then used for classification 
 
-The model returns the attention weights of last TransformerEncoder which is later on visualised (Note : open in jupyter notebook to view)
+The model returns the attention weights of last TransformerEncoder which is later on visualised (Note : open in colab to view)
