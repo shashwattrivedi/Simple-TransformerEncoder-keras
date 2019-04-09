@@ -7,7 +7,7 @@ from LayerNormalization import LayerNormalization
 from PositionWiseFeedForward import PositionWiseFeedForward
 
 class TransformerEncoder():
-'''
+    '''
     Main Transformer Encoder block : Encapsulates different layers with a Transformer Encoder block and calls them in order.
     Inputs
     d_model : dimensions of the output and internal layers
@@ -19,7 +19,7 @@ class TransformerEncoder():
 
     Outputs
     A tuple:Transformer Encoder Representation, attention weights for each head and token
-'''
+    '''
     def __init__(self, d_model,heads,dim_q,dim_v,hidden_units,dropout_rate,name,activation='relu', **kwargs):
         self.dim_v        = dim_v
         self.dim_q        = dim_q
@@ -29,7 +29,7 @@ class TransformerEncoder():
         self.attention_layer      = MultiHeadedAttention(d_model = d_model,heads = self.heads,dim_q = self.dim_q,dim_v = self.dim_v,dropout_rate=dropout_rate,name=name)
         self.normalization_layer  = LayerNormalization()
         self.feedforward          = PositionWiseFeedForward(d_model = d_model,inner_dim = self.hidden_units,dropout_rate=dropout_rate,name=name)
- 
+
 
     def __call__(self, x):
 
