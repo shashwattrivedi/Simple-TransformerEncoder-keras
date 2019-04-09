@@ -55,11 +55,11 @@ class MultiHeadedAttention():
         Scaled dot attention : computes the attention score by dot product of query vector and 
         key vector. Sums the value vectors of tokens based on attention weights( after softmax of attention score )
         '''
-      attention_score   = Lambda( lambda x: K.batch_dot(x[0],x[1]) / np.sqrt(self.dim_q))([self.query_vec,self.key_vec])
-      attention_weights = Activation('softmax')(attention_score)
-      attention_vector  = Lambda( lambda x: K.batch_dot(x[0],x[1]))([attention_weights,self.value_vec])
+        attention_score   = Lambda( lambda x: K.batch_dot(x[0],x[1]) / np.sqrt(self.dim_q))([self.query_vec,self.key_vec])
+        attention_weights = Activation('softmax')(attention_score)
+        attention_vector  = Lambda( lambda x: K.batch_dot(x[0],x[1]))([attention_weights,self.value_vec])
 
-      return attention_vector, attention_weights
+        return attention_vector, attention_weights
 
     def __call__(self, x):
 
