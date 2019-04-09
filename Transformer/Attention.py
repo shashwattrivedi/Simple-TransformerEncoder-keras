@@ -27,7 +27,7 @@ class MultiHeadedAttention():
 
         self.output_layer  = TimeDistributed(Dense(d_model,use_bias = False),name = name+'_AttentionOutputLayer')
 
-# moves up the timestep dimention towards the end and heads towards batch_size dimention
+    # moves up the timestep dimention towards the end and heads towards batch_size dimention
     def shift_timestep_ahead(self,vec,last_dim,time_steps,transpose=False):
       vec     = Reshape([-1,self.heads,last_dim])(vec)
 
@@ -41,11 +41,11 @@ class MultiHeadedAttention():
 
       return vec
 
-# moves down the timestep dimention towards the batch_size dimention
+    # moves down the timestep dimention towards the batch_size dimention
     def shift_timestep_behind(self,vec,last_dim,time_steps):
       vec    = Lambda(lambda x:K.reshape(x, [-1,self.heads, time_steps,  last_dim ]))(vec)
       vec    = Permute([2,1,3])(vec)
-        
+
       vec    = Lambda(lambda x:K.reshape(x, [-1,time_steps,self.heads*last_dim ]))(vec)
 
       return vec
