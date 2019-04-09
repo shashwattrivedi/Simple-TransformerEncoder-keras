@@ -77,12 +77,14 @@ class TextProcessor:
         self.nlp = nlp
         self.tokenizer= Tokenizer()
         self.max_seq_len=None
+        self.inversedict = None
 
     def fit_and_transform(self,texts):
         texts = self.clean_for_model(texts)
         texts = self.addSpecialToken(texts)
 
         self.tokenizer.fit_on_texts(texts)
+        self.create_inverse_dict()
         self.max_seq_len = max([len(text.split()) for text in texts])
 
         sequences = self.tokenizer.texts_to_sequences(texts)
@@ -96,6 +98,7 @@ class TextProcessor:
 
         self.max_seq_len = max([len(text.split()) for text in texts])
         self.tokenizer.fit_on_texts(texts)
+        self.create_inverse_dict()
         
         return None
 
